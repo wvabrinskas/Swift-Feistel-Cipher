@@ -4,7 +4,7 @@ import CryptoKit
 open class Fesitel {
     private var passes: Int
     
-    init(passes: Int) {
+    public init(passes: Int) {
         self.passes = passes
     }
     
