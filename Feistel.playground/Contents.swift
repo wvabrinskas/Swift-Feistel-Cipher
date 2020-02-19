@@ -39,7 +39,6 @@ open class Fesitel {
     }
     
     private func ccSha512(data: Data) -> Data {
-
         let sha = SHA512.hash(data: data)
         var newData = Data(count: SHA512.byteCount)
         var i = 0
@@ -58,6 +57,7 @@ open class Fesitel {
             
             if let mutRawPointer = UnsafeMutableRawPointer(mutating: ptr.baseAddress) {
                 let totalSize = data.count
+                let remainder = totalSize % 2
                 let uploadChunkSize = totalSize / 2
                 var offset = 0
                 
@@ -67,6 +67,28 @@ open class Fesitel {
                     dataChunks.append(chunk)
                     offset += chunkSize
                 }
+                print(dataChunks)
+
+                if dataChunks.count > 2 {
+                    if var lastChunk = dataChunks.last {
+                        for i in 2..<dataChunks.count {
+                            lastChunk.append(dataChunks[i])
+                        }
+                        print(lastChunk)
+                        dataChunks = dataChunks.dropLast()
+                        dataChunks.append(lastChunk)
+                    }
+                    print(dataChunks)
+                }
+//                if remainder > 0 {
+//                        let chunkSize = remainder
+//
+//                        let remainderChunk = Data(bytesNoCopy: mutRawPointer+offset, count: chunkSize, deallocator: Data.Deallocator.none)
+//
+//                        offset += remainder
+//
+//                }
+                
             }
         }
         return dataChunks
@@ -141,9 +163,8 @@ open class Fesitel {
 }
 
 
-
-
-let data = "SOOOOOOOOOOOOOOOOOOOOOOOOOO DOPE".data(using: .utf8)
+let data = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut as;dfkja;fkjakdfjadfjajf;a.sff".data(using: .utf8)
+print(data)
 let fest = Fesitel(passes: 20)
 
 if let encrypt = fest.encrypt(data: data) {
