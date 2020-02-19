@@ -1,7 +1,6 @@
 import Foundation
 import UIKit
 import CryptoKit
-import CommonCrypto
 
 open class Fesitel {
     private var passes: Int
@@ -41,14 +40,16 @@ open class Fesitel {
     }
     
     private func ccSha512(data: Data) -> Data {
-        var digest = Data(count: Int(CC_SHA512_DIGEST_LENGTH))
 
-        _ = digest.withUnsafeMutableBytes { (digestBytes) in
-            data.withUnsafeBytes { (stringBytes) in
-                CC_SHA256(stringBytes, CC_LONG(data.count), digestBytes)
-            }
+        let sha = SHA256.hash(data: data)
+        var newData = Data(count: SHA256.byteCount)
+        var i = 0
+        sha.forEach { (value) in
+            newData[i] = value
+            i += 1
         }
-        return digest
+        
+        return newData
     }
     
     private func chunks(data: Data) -> [Data] {

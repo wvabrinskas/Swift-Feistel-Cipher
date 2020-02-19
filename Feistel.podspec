@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.platforms = { :ios => "13.0" }
   s.source = { :git => "git@github.com:wvabrinskas/Swift-Feistel-Cipher.git" , :tag => "#{s.version}" }
 
-  s.frameworks = 'UIKit' , 'Foundation', 'CommonCrypto'
+  s.frameworks = 'Foundation', 'CryptoKit'
   s.source_files  = "Feistel/Feistel.swift"
 end
