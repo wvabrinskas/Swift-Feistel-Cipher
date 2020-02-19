@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 import CryptoKit
 
 open class Fesitel {
@@ -41,8 +40,8 @@ open class Fesitel {
     
     private func ccSha512(data: Data) -> Data {
 
-        let sha = SHA256.hash(data: data)
-        var newData = Data(count: SHA256.byteCount)
+        let sha = SHA512.hash(data: data)
+        var newData = Data(count: SHA512.byteCount)
         var i = 0
         sha.forEach { (value) in
             newData[i] = value
