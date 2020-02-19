@@ -125,7 +125,7 @@ open class Fesitel {
         return self.swap(data: oldData)
     }
     
-    open func decrypt(data: Data?, count: Int = 0) -> Data? {
+    open func decrypt(data: Data?) -> Data? {
         guard let nonNilData = data else {
             return nil
         }
