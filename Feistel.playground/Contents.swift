@@ -111,41 +111,39 @@ open class Fesitel {
         return right
     }
     
-    open func encrypt(data: Data?, count: Int = 0) -> Data? {
+    open func encrypt(data: Data?) -> Data? {
         guard let nonNilData = data else {
             return nil
         }
-        
-        guard count < passes else {
-            return self.swap(data: nonNilData)
+
+        var oldData: Data = nonNilData
+        for i in 0..<passes {
+            if let newData = self.run(data: oldData, count: i) {
+                oldData = newData
+            }
         }
-        
-        let newData = self.run(data: nonNilData, count: count)
-        
-        let newCount = count + 1
-        return self.encrypt(data: newData, count: newCount)
+        return self.swap(data: oldData)
     }
     
     open func decrypt(data: Data?, count: Int = 0) -> Data? {
         guard let nonNilData = data else {
-            return data
+            return nil
         }
-        
-        guard count < passes else {
-            return self.swap(data: nonNilData)
+
+        var oldData: Data = nonNilData
+        for i in 0..<passes {
+            if let newData = self.run(data: oldData, count: (passes - 1) - i) {
+                oldData = newData
+            }
         }
-        
-        let newData = self.run(data: nonNilData, count: (passes - 1) - count)
-        
-        let newCount = count + 1
-        return self.decrypt(data: newData, count: newCount)
+        return self.swap(data: oldData)
     }
 }
 
 
 
 
-let data = "super duper awesome test".data(using: .utf8)
+let data = "SOOOOOOOOOOOOOOOOOOOOOOOOOO DOPE".data(using: .utf8)
 let fest = Fesitel(passes: 20)
 
 if let encrypt = fest.encrypt(data: data) {

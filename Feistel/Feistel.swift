@@ -4,7 +4,7 @@ import CryptoKit
 open class Fesitel {
     private var passes: Int
     
-    public init(passes: Int) {
+    init(passes: Int) {
         self.passes = passes
     }
     
@@ -40,8 +40,8 @@ open class Fesitel {
     
     private func ccSha512(data: Data) -> Data {
 
-        let sha = SHA256.hash(data: data)
-        var newData = Data(count: SHA256.byteCount)
+        let sha = SHA512.hash(data: data)
+        var newData = Data(count: SHA512.byteCount)
         var i = 0
         sha.forEach { (value) in
             newData[i] = value
@@ -111,36 +111,37 @@ open class Fesitel {
         return right
     }
     
-    open func encrypt(data: Data?, count: Int = 0) -> Data? {
+    open func encrypt(data: Data?) -> Data? {
         guard let nonNilData = data else {
             return nil
         }
-        
-        guard count < passes else {
-            return self.swap(data: nonNilData)
+
+        var oldData: Data = nonNilData
+        for i in 0..<passes {
+            if let newData = self.run(data: oldData, count: i) {
+                oldData = newData
+            }
         }
-        
-        let newData = self.run(data: nonNilData, count: count)
-        
-        let newCount = count + 1
-        return self.encrypt(data: newData, count: newCount)
+        return self.swap(data: oldData)
     }
     
     open func decrypt(data: Data?, count: Int = 0) -> Data? {
         guard let nonNilData = data else {
-            return data
+            return nil
         }
-        
-        guard count < passes else {
-            return self.swap(data: nonNilData)
+
+        var oldData: Data = nonNilData
+        for i in 0..<passes {
+            if let newData = self.run(data: oldData, count: (passes - 1) - i) {
+                oldData = newData
+            }
         }
-        
-        let newData = self.run(data: nonNilData, count: (passes - 1) - count)
-        
-        let newCount = count + 1
-        return self.decrypt(data: newData, count: newCount)
+        return self.swap(data: oldData)
     }
 }
+
+
+
 
 
 
