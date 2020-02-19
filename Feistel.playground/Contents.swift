@@ -70,15 +70,16 @@ open class Fesitel {
                 print(dataChunks)
 
                 if dataChunks.count > 2 {
-                    if var lastChunk = dataChunks.last {
-                        for i in 2..<dataChunks.count {
-                            lastChunk.append(dataChunks[i])
-                        }
-                        print(lastChunk)
-                        dataChunks = dataChunks.dropLast()
-                        dataChunks.append(lastChunk)
+                    var lastChunk = Data()
+                    for i in 2..<dataChunks.count {
+                        lastChunk.append(dataChunks[i])
                     }
+                    print(lastChunk)
+                    dataChunks = Array(dataChunks[0..<2])
                     print(dataChunks)
+                    dataChunks[1].append(lastChunk)
+                
+                    print("DONE: \(dataChunks)")
                 }
 //                if remainder > 0 {
 //                        let chunkSize = remainder
