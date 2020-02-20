@@ -54,42 +54,26 @@ open class Fesitel {
         var dataChunks:[Data] = []
         
         data.withUnsafeBytes { ptr in
-            
             if let mutRawPointer = UnsafeMutableRawPointer(mutating: ptr.baseAddress) {
                 let totalSize = data.count
-                let remainder = totalSize % 2
                 let uploadChunkSize = totalSize / 2
                 var offset = 0
-                
+
                 while offset < totalSize {
                     let chunkSize = offset + uploadChunkSize > totalSize ? totalSize - offset : uploadChunkSize
                     let chunk = Data(bytesNoCopy: mutRawPointer+offset, count: chunkSize, deallocator: Data.Deallocator.none)
                     dataChunks.append(chunk)
                     offset += chunkSize
                 }
-                print(dataChunks)
 
                 if dataChunks.count > 2 {
                     var lastChunk = Data()
                     for i in 2..<dataChunks.count {
                         lastChunk.append(dataChunks[i])
                     }
-                    print(lastChunk)
                     dataChunks = Array(dataChunks[0..<2])
-                    print(dataChunks)
-                    dataChunks[1].append(lastChunk)
-                
-                    print("DONE: \(dataChunks)")
+                    dataChunks[0].append(lastChunk)
                 }
-//                if remainder > 0 {
-//                        let chunkSize = remainder
-//
-//                        let remainderChunk = Data(bytesNoCopy: mutRawPointer+offset, count: chunkSize, deallocator: Data.Deallocator.none)
-//
-//                        offset += remainder
-//
-//                }
-                
             }
         }
         return dataChunks
@@ -100,7 +84,7 @@ open class Fesitel {
         var data = Data(count: left.count)
         
         for i in 0..<left.count {
-            data[i] = left[i] ^ right[i]
+            data[i] = left[i] ^ right[i % right.count]
         }
 
         return data
@@ -164,8 +148,7 @@ open class Fesitel {
 }
 
 
-let data = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut as;dfkja;fkjakdfjadfjajf;a.sff".data(using: .utf8)
-print(data)
+let data = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut as;dfkja;fkjakdfjadfjajf;a.sffsdajuu ".data(using: .utf8)
 let fest = Fesitel(passes: 20)
 
 if let encrypt = fest.encrypt(data: data) {
