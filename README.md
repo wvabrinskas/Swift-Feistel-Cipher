@@ -16,14 +16,18 @@ My attempt at implementing a Feistel Cipher completely in Swift
 - Add to your podfile `pod 'Feistel'`
 
 # Usage
-1. Create a `Feistel` object with the number of passes you would like to take. 
-    - `let fest = Fesitel(passes: 20)`
+1. Create a `Feistel` object using the `shared` property. 
+    - `let fest = Feistel.shared`
+2. Set the number of passes you would like to take for both decrpyt and encrypt. It defaults to `5`.
+    - `fest.passes = 10`
 2. Create the `Data` object you would like to encrypt.
     - `let data = "super duper awesome test".data(using: .utf8)`
 3. To encrypt:
     - `let encrypted = fest.encrypt(data: data)`
 4. To decrypt (using already encrypted data): 
     - `let decrypt = fest.decrypt(data: encrypted)`
+5. The keys used in the cipher are unique per instance session. You can retrieve the keys used in the cipher by calling: 
+    - `fest.keys()`
 
 # Resources 
 - Feistel Cipher - Computerphile: https://www.youtube.com/watch?v=FGhj3CGxl8I
