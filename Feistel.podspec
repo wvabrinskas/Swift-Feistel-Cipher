@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "Feistel"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "A feistel cipher algorithm written in Swift"
   s.description  = "A feistel cipher algorithm used to encrypt and decrypt data"
 
@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.source = { :git => "https://github.com/wvabrinskas/Swift-Feistel-Cipher.git" , :tag => "#{s.version}" }
 
   s.frameworks = 'Foundation', 'CryptoKit'
-  s.source_files  = "Feistel/Feistel.swift"
+  s.source_files  = "Sources/Feistel.swift"
 end
