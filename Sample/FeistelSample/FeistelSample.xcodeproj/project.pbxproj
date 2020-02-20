@@ -13,7 +13,7 @@
 		91907E3B23FED596002EEBB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91907E3923FED596002EEBB3 /* Main.storyboard */; };
 		91907E3D23FED597002EEBB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91907E3C23FED597002EEBB3 /* Assets.xcassets */; };
 		91907E4023FED597002EEBB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91907E3E23FED597002EEBB3 /* LaunchScreen.storyboard */; };
-		91907EC123FED96E002EEBB3 /* Feistel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91907EC023FED96E002EEBB3 /* Feistel.swift */; };
+		91907EE123FF3565002EEBB3 /* Feistel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91907EE023FF3565002EEBB3 /* Feistel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		91907E3C23FED597002EEBB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91907E3F23FED597002EEBB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91907E4123FED597002EEBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		91907EC023FED96E002EEBB3 /* Feistel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feistel.swift; path = ../../../../Sources/Feistel.swift; sourceTree = "<group>"; };
+		91907EE023FF3565002EEBB3 /* Feistel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feistel.swift; path = ../../../../Sources/Feistel/Feistel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 		91907E4723FED59D002EEBB3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				91907EC023FED96E002EEBB3 /* Feistel.swift */,
+				91907EE023FF3565002EEBB3 /* Feistel.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -150,7 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91907E3823FED596002EEBB3 /* ViewController.swift in Sources */,
-				91907EC123FED96E002EEBB3 /* Feistel.swift in Sources */,
+				91907EE123FF3565002EEBB3 /* Feistel.swift in Sources */,
 				91907E3423FED596002EEBB3 /* AppDelegate.swift in Sources */,
 				91907E3623FED596002EEBB3 /* SceneDelegate.swift in Sources */,
 			);
