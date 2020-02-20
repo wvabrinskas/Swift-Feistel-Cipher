@@ -6,6 +6,12 @@ My attempt at implementing a Feistel Cipher completely in Swift
 ![](https://img.shields.io/badge/swift-5.1-orange)
 ![](https://img.shields.io/badge/iOS-13+-blue)
 
+# Background
+
+"In cryptography, a Feistel cipher is a symmetric structure used in the construction of block ciphers, named after the German-born physicist and cryptographer Horst Feistel who did pioneering research while working for IBM (USA); it is also commonly known as a Feistel network. A large proportion of block ciphers use the scheme, including the Data Encryption Standard (DES). The Feistel structure has the advantage that encryption and decryption operations are very similar, even identical in some cases, requiring only a reversal of the key schedule. Therefore, the size of the code or circuitry required to implement such a cipher is nearly halved." (Wikipedia)
+
+![](images/cipher.png | width: 100)
+
 # Installation
 - Add to your podfile `pod 'Feistel'`
 
@@ -21,4 +27,4 @@ My attempt at implementing a Feistel Cipher completely in Swift
 
 # Resources 
 - Feistel Cipher - Computerphile: https://www.youtube.com/watch?v=FGhj3CGxl8I
-
+- Feistel cipher - https://en.wikipedia.org/wiki/Feistel_cipher
