@@ -2,7 +2,7 @@ import Foundation
 import CryptoKit
 
 open class Feistel {
-    public static let shared = Fesitel()
+    public static let shared = Feistel()
     public var passes: Int = 5
     
     private lazy var internalKeys: [String] = {
