@@ -10,7 +10,7 @@ My attempt at implementing a Feistel Cipher completely in Swift
 
 "In cryptography, a Feistel cipher is a symmetric structure used in the construction of block ciphers, named after the German-born physicist and cryptographer Horst Feistel who did pioneering research while working for IBM (USA); it is also commonly known as a Feistel network. A large proportion of block ciphers use the scheme, including the Data Encryption Standard (DES). The Feistel structure has the advantage that encryption and decryption operations are very similar, even identical in some cases, requiring only a reversal of the key schedule. Therefore, the size of the code or circuitry required to implement such a cipher is nearly halved." (Wikipedia)
 
-<img width="500" src="./images/cipher.png">
+<img width="500" src=".https://github.com/wvabrinskas/Swift-Feistel-Cipher/blob/swift-package/images/cipher.png">
 
 # Installation
 - Add to your podfile `pod 'Feistel'`
@@ -22,7 +22,6 @@ My attempt at implementing a Feistel Cipher completely in Swift
     - `fest.passes = 10`
 2. Create the `Data` object you would like to encrypt.
     - `let data = "super duper awesome test".data(using: .utf8)`
-    - It can work with images too! Really anything that can be converted to `Data`
 3. To encrypt:
     - `let encrypted = fest.encrypt(data: data)`
 4. To decrypt (using already encrypted data): 
