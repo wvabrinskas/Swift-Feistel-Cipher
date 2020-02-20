@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "Feistel"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "A feistel cipher algorithm written in Swift"
   s.description  = "A feistel cipher algorithm used to encrypt and decrypt data"
 
