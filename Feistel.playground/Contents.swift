@@ -2,13 +2,10 @@ import Foundation
 import CryptoKit
 
 open class Fesitel {
-    private var passes: Int
+    public static let shared = Fesitel()
+    public var passes: Int = 5
     
-    init(passes: Int) {
-        self.passes = passes
-    }
-    
-    private lazy var keys: [String] = {
+    private lazy var internalKeys: [String] = {
         var keysN:[String] = []
         for _ in 0..<self.passes {
             keysN.append(generateKey())
@@ -98,7 +95,7 @@ open class Fesitel {
         var right = chunks[1]
         var oldRight = chunks[1]
                     
-        let key = keys[count]
+        let key = internalKeys[count]
         let keyData = key.data(using: .utf8)!
         right.append(keyData)
         
@@ -145,11 +142,18 @@ open class Fesitel {
         }
         return self.swap(data: oldData)
     }
+    
+    public func keys() -> [String] {
+        return self.internalKeys
+    }
 }
 
 
 let data = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut as;dfkja;fkjakdfjadfjajf;a.sffsdajuu ".data(using: .utf8)
-let fest = Fesitel(passes: 20)
+let fest = Fesitel.shared
+fest.passes = 5
+
+print(fest.keys())
 
 if let encrypt = fest.encrypt(data: data) {
     let string = String(data: encrypt, encoding: .utf8)
