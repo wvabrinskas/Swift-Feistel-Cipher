@@ -1,7 +1,7 @@
 import Foundation
 import CryptoKit
 
-open class Fesitel {
+open class Feistel {
     public static let shared = Fesitel()
     public var passes: Int = 5
     
