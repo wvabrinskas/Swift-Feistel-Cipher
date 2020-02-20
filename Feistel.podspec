@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.source = { :git => "https://github.com/wvabrinskas/Swift-Feistel-Cipher.git" , :tag => "#{s.version}" }
 
   s.frameworks = 'Foundation', 'CryptoKit'
-  s.source_files  = "Sources/Feistel.swift"
+  s.source_files  = "Feistel/Sources/Feistel/Feistel.swift"
 end
