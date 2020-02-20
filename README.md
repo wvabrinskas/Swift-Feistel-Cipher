@@ -1,6 +1,11 @@
 # Swift Feistel Cipher
 My attempt at implementing a Feistel Cipher completely in Swift 
 
+![](https://img.shields.io/github/license/wvabrinskas/Swift-Feistel-Cipher)
+![](https://img.shields.io/cocoapods/v/Feistel)
+![](https://img.shields.io/badge/swift-5.1-orange)
+![](https://img.shields.io/badge/iOS-13+-blue)
+
 # Installation
 - Add to your podfile `pod 'Feistel'`
 
