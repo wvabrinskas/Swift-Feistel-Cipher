@@ -25,6 +25,7 @@ My attempt at implementing a Feistel Cipher completely in Swift
     - NOTE: when setting input keys the number of passes will be set to the number of input keys
 2. Create the `Data` object you would like to encrypt.
     - `let data = "super duper awesome test".data(using: .utf8)`
+    - This can be an image too! Really anything that can be converted to `Data`
 3. To encrypt:
     - `let encrypted = fest.encrypt(data: data)`
 4. To decrypt (using already encrypted data): 
