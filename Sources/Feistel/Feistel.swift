@@ -4,7 +4,13 @@ import CryptoKit
 open class Feistel {
     public static let shared = Feistel()
     public var passes: Int = 5
-    public var inputKeys: [String]?
+    public var inputKeys: [String]? {
+        didSet {
+            if let input = inputKeys {
+                self.passes = input.count
+            }
+        }
+    }
     
     private lazy var internalKeys: [String] = {
         var keysN:[String] = []

@@ -19,6 +19,9 @@ class ViewController: UIViewController {
         let fest = Feistel.shared
         fest.passes = 5
         
+        //when setting input keys the number of passes will be set to the number of input keys
+        fest.inputKeys = ["asd;fkajf;dk", "asdk;fjasfkafjasds", "asdjkfhsfjdkshfh", "asdkfjkfdjsjfsdic"]
+        
         print(fest.keys())
 
         if let encrypt = fest.encrypt(data: data) {
