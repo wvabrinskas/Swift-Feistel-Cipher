@@ -4,6 +4,7 @@ import CryptoKit
 open class Feistel {
     public static let shared = Feistel()
     public var passes: Int = 5
+    public var inputKeys: [String]?
     
     private lazy var internalKeys: [String] = {
         var keysN:[String] = []
@@ -94,8 +95,9 @@ open class Feistel {
         let left = chunks[0]
         var right = chunks[1]
         var oldRight = chunks[1]
-                    
-        let key = internalKeys[count]
+        
+        let keys = self.inputKeys ?? self.internalKeys
+        let key = keys[count]
         let keyData = key.data(using: .utf8)!
         right.append(keyData)
         
@@ -144,6 +146,6 @@ open class Feistel {
     }
     
     public func keys() -> [String] {
-        return self.internalKeys
+        return self.inputKeys ?? self.internalKeys
     }
 }
