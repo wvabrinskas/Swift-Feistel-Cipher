@@ -20,6 +20,9 @@ My attempt at implementing a Feistel Cipher completely in Swift
     - `let fest = Feistel.shared`
 2. Set the number of passes you would like to take for both decrpyt and encrypt. It defaults to `5`.
     - `fest.passes = 10`
+3. Optionally set the input keys you would like to use in the encryption and decryption. 
+    - `fest.inputKeys = ["key1", "key2", "key3", "key4"]`
+    - NOTE: when setting input keys the number of passes will be set to the number of input keys
 2. Create the `Data` object you would like to encrypt.
     - `let data = "super duper awesome test".data(using: .utf8)`
 3. To encrypt:
